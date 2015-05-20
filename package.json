@@ -1,0 +1,23 @@
+{
+  "name": "tumblr-theme-sleepingcatsyndrome",
+  "version": "0.0.1",
+  "description": "tumblr theme for sleepingcatsyndrome.com",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd theme && ../node_modules/.bin/peak watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kuronekomichael/tumblr-theme-simple.git"
+  },
+  "keywords": [
+    "tumblr",
+    "theme",
+    "peak"
+  ],
+  "author": "kuronekomichael",
+  "license": "MIT",
+  "dependencies": {
+    "peak": "git://github.com/kuronekomichael/peak.git"
+  }
+}

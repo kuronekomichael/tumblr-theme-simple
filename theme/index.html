@@ -1,0 +1,537 @@
+<html lang="ja">
+<head>
+    <title>{Title}{block:PostSummary} : {PostSummary}{/block:PostSummary}</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="the blog for software engineers, testers or leisured persons" />
+    <meta name="google-site-verification" content="cZNTzG4Bru78lhIslA7UZuRWSHB7m3UMNMdWwP-MS0I" />
+    <link rel="icon" href="{Favicon}"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
+    <link type="text/css" rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+    <!--[if lt IE 9]>
+	<script>
+	    document.createElement('header');
+	    document.createElement('nav');
+	    document.createElement('section');
+	    document.createElement('article');
+	    document.createElement('aside');
+        document.createElement('footer');
+    </script>
+    <![endif]-->
+</head>
+<style>
+@font-face {
+	font-family: 'jolly-icons-free';
+	src:url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/jolly-icons-free.eot?-3bqqk6');
+	src:url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/jolly-icons-free.eot?#iefix-3bqqk6') format('embedded-opentype'),
+		url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/jolly-icons-free.woff?-3bqqk6') format('woff'),
+		url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/jolly-icons-free.ttf?-3bqqk6') format('truetype'),
+		url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/jolly-icons-free.svg?-3bqqk6#jolly-icons-free') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'LigatureSymbols';
+    src: url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/LigatureSymbols-2.11.eot');
+    src: url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype'),
+         url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/LigatureSymbols-2.11.woff') format('woff'),
+         url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/LigatureSymbols-2.11.ttf') format('truetype'),
+         url('//s3-ap-northeast-1.amazonaws.com/sleepingcatsyndrome/fonts/LigatureSymbols-2.11.svg#LigatureSymbols') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icon {
+    font-family: 'LigatureSymbols';
+    text-decoration: none;
+    font-size: 2em;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    -webkit-font-feature-settings: "liga" 1, "dlig" 1;
+    -moz-font-feature-settings: "liga=1, dlig=1";
+    -ms-font-feature-settings: "liga" 1, "dlig" 1;
+    -o-font-feature-settings: "liga" 1, "dlig" 1;
+    font-feature-settings: "liga" 1, "dlig" 1;
+}
+.jolly {
+	font-family: 'jolly-icons-free';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+* {
+    color: #333;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #333;
+    color: white;
+    font-size: .8em;
+    text-align: center;
+    padding-top: 3px;
+}
+address {
+    text-indent: 100%;
+    white-space:nowrap;
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    background-image: url({PortraitURL-64});
+    border: 5px solid #333;
+    font-size: 4em;
+    position: absolute;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 1.4em;
+    width: 4rem;
+    height: 4rem;
+    left: 1em;
+    top: 0;
+    border-radius: 1em;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+}
+nav ul, nav li {
+    display: inline;
+}
+nav ul {
+    position: absolute;
+    top: 2em;
+    right: 5px;
+    padding: 0;
+    margin: 0;
+    font-size: .7em;
+}
+nav ul li a {
+    color: #333;
+    margin-right: .5em;
+}
+article {
+    width: 100%;
+    display : -webkit-box;
+	display : -ms-flexbox;
+	display : -webkit-flex;
+	display : flex;
+}
+time {
+    display: block;
+    width: 20%;
+    position: relative;
+    border-right: 1px solid #333;
+    text-align: right;
+    font-size: .5em;
+    padding-top: 1rem;
+}
+time:after {
+    content: '―';
+    letter-spacing: -1px;
+}
+time:before {
+    content: '&';
+
+    font-family: "jolly-icons-free";
+    speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-size: 4em;
+    position: absolute;
+    background-color: #3399cc;
+    border: 3px solid #333;
+    color: white;
+    text-align: center;
+    line-height: 1.6em;
+    width: 1.5em;
+    height: 1.5em;
+    right: -0.75em;
+    top: 3rem;
+    border-radius: 2em;
+}
+
+article.text     time:before { content: '&';letter-spacing: 3px; }
+article.photoset time:before { content: '.'; }
+article.photo    time:before { content: '.'; }
+article.quote    time:before { content: '$'; }
+article.link     time:before { content: ')'; }
+article.chat     time:before { content: '8'; }
+article.audio    time:before { content: '<'; }
+article.video    time:before { content: '7'; }
+
+article section {
+    width: 60%;
+    padding: 2rem 0 5rem 0;
+}
+body article:nth-child(2) > time {
+    padding-top: 4.0rem;
+}
+body article:nth-child(2) > section {
+    padding-top: 6.0rem;
+}
+body article:nth-child(2) > time:before {
+    top: 7rem;
+}
+article section > * {
+    margin: 0 2rem;
+}
+article section > h1 {
+    font-weight: bold;
+    font-size: 2.3em;
+    line-height: 1em;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+article section > h1 > a {
+    color: inherit;
+    text-decoration: none;
+}
+article section h2 {
+    border-bottom: 1px dotted #333;
+}
+article.quote section > div {
+    font-family: serif;
+    font-size: 3em;
+}
+article section > div a {
+    color: #006699;
+}
+article section > header,
+article section > footer {
+    text-align: right;
+}
+
+.readmore {
+    font-weight: bold;
+}
+
+.readmore:before {
+    content: '...';
+}
+
+.tags, .social {
+    display: inline;
+}
+.tags {
+    font-size: .8em;
+}
+.comments {
+    text-align: left;
+}
+
+.icontext:before {
+    content: attr(title);
+    font-size: 2em;
+    font-family: 'LigatureSymbols';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    -webkit-font-feature-settings: "liga" 1, "dlig" 1;
+    -moz-font-feature-settings: "liga=1, dlig=1";
+    -ms-font-feature-settings: "liga" 1, "dlig" 1;
+    -o-font-feature-settings: "liga" 1, "dlig" 1;
+    font-feature-settings: "liga" 1, "dlig" 1;
+}
+strong {
+    color: #ff6666;
+    font-weight: bold;
+    text-decoration: none;
+    font-style: normal;
+}
+em {
+    color: #9933cc;
+    font-weight: bold;
+    text-decoration: none;
+    font-style: normal;
+}
+code {
+    background-color: #eee;
+    border: 1px dotted #ccc;
+    color: black;
+    padding: 0 .3em;
+}
+pre {
+    background-color: #eee;
+    color: black;
+    padding: .5em;
+    border:1px dotted #ccc;
+}
+pre code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+article.quote {
+    background-color: #3399cc;
+}
+article.quote * {
+    color: white;
+}
+article.quote time {
+    color: #3399cc;
+}
+article.quote time:before {
+    background-color: white; color: #3399cc;
+}
+body > footer {
+    width: 100%;
+    display : -webkit-box;
+	display : -ms-flexbox;
+	display : -webkit-flex;
+	display : flex;
+}
+body > footer:before {
+    content: ' ';
+    width: 20%;
+    display: block;
+    border-right: 1px solid #333;
+}
+.source {
+    font-size: .7em;
+    color: white;
+}
+.source * {
+    display: inline;
+}
+.pagenation {
+    width: 60%;
+    text-align: center;
+    margin-bottom: 5em;
+}
+.pagenation a {
+    text-decoration: none;
+    margin-right: 1em;
+    font-size: 5em;
+}
+@media screen and (max-width: 1024px) {
+    time { width: 10%; }
+    body > footer:before { width: 10% }
+    article section { width: 90%; }
+    .pagenation { width: 90%; }
+    address { width: 2.5rem; height: 2.5rem; border-width: 5px;left:0; }
+    .tags, .social { display: block; }
+}
+/* tumblr presents */
+.like_button_cover,
+.reblog_button_cover {
+    display: inline-block;
+}
+</style>
+<body>
+    <nav>
+        <a href="/">{Title}</a>
+        <a href="/"><address>@kuronekomichael</address></a>
+        <ul>
+            <li><a href="https://twitter.com/kuronekomichael" class="icon">twitter</a>
+            <li><a href="http://github.com/kuronekomichael" class="icon">github</a>
+        </ul>
+    </nav>
+    {block:Posts}
+    <article class="{block:Quote}quote{/block:Quote}{block:Photo}photo{/block:Photo}{block:Photoset}photoset{/block:Photoset}{block:Text}text{/block:Text}{block:Link}link{/block:Link}{block:Chat}chat{/block:Chat}{block:Audio}audio{/block:Audio}{block:Video}video{/block:Video}">
+        <time>
+            {block:Date}
+            {Year}-{MonthNumber}-{DayOfMonth}
+            {/block:Date}
+            </time>
+        <section>
+            {block:Title}
+            <h1><a href="{Permalink}">{Title}</a></h1>
+            {/block:Title}
+            {block:Link}
+            <h1><a href="{URL}" {Target}>{Name}</a></h1>
+            {/block:Link}
+            <div>
+            {block:Text}
+                {Body}
+                {block:More}<a href="{Permalink}" class="readmore">Read more</a>{/block:More}
+            {/block:Text}
+            {block:Photo}
+                {block:IndexPage}
+                    <a href="{Permalink}">
+                {/block:IndexPage}
+                {block:PermalinkPage}{LinkOpenTag}{/block:PermalinkPage}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                </a>
+                {block:Caption}
+                    <div class="caption">
+                        {Caption}
+                        {block:More}<a href="{Permalink}" class="readmore">Read more</a>{/block:More}
+                    </div>
+                {/block:Caption}
+            {/block:Photo}
+            {block:Photoset}
+                {Photoset-700}
+                {block:Caption}
+                    <div class="caption">
+                        {Caption}
+                        {block:More}<a href="{Permalink}" class="readmore">Read more</a>{/block:More}
+                    </div>
+                {/block:Caption}
+            {/block:Photoset}
+            {block:Quote}
+                {Quote}
+            {/block:Quote}
+            {block:Link}
+                {block:Description}
+                    {Description}
+                    {block:More}<a href="{Permalink}" class="readmore">Read more</a>{/block:More}
+                {/block:Description}
+            {/block:Link}
+            {block:Answer}
+                <div>Q. {Question}</div>
+                <div><img src="{AskerPortraitURL-24}" />{Asker}</div>
+                <div>A. {Answer}</div>
+            {/block:Answer}
+            {block:Chat}
+                {block:Lines}
+                <div class="{Alt} user_{UserNumber}">{block:Label}{Label}{/block:Label} {Line}</div>
+                {/block:Lines}
+            {/block:Chat}
+            {block:Audio}
+                {block:AlbumArt}<img src="{AlbumArtURL}" class="albumArt" />{/block:AlbumArt}
+                {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
+                {block:Caption}{Caption}{/block:Caption}
+                {block:TrackName}Track: {TrackName}{/block:TrackName}
+                {block:Artist}Artist: {Artist}{/block:Artist}
+                {block:Album}Album: {Album}{/block:Album}
+                {block:PlayCount}Plays: {PlayCount}{/block:PlayCount}
+            {/block:Audio}
+            {block:Video}
+                {Video-700}
+                {block:Caption}
+                    {Caption}
+                    {block:More}<a href="{Permalink}" class="readmore">Read more</a>{/block:More}
+                {/block:Caption}
+            {/block:Video}
+            </div>
+            <footer>
+                {block:Quote}
+                {block:Source}
+                <div class="source">By {Source}</div>
+                {/block:Source}
+                {/block:Quote}
+                {block:HasTags}
+                <div class="tags icontext" title="tag">
+                    {block:Tags}
+                    <a href="{TagURL}">#{Tag}</a>
+                    {/block:Tags}
+                </div>
+                {/block:HasTags}
+                <div class="social">
+                    <div class="like_button_cover">{LikeButton}</div>
+                    <div class="reblog_button_cover">{ReblogButton}</div>
+                    <a  class="icon"
+                        href="http://twitter.com/home?status={block:Quote}{Title}{/block:Quote}{block:Text}{Title}{/block:Text}{block:Link}{Name}{/block:Link}{block:Chat}{Title}{/block:Chat}{block:Audio}{TrackName}{/block:Audio}+{ShortURL}"
+                        >twitter</a>
+                    <a  class="icon"
+                        href="http://www.facebook.com/share.php?u={ShortURL}&title={block:Quote}{Title}{/block:Quote}{block:Text}{Title}{/block:Text}{block:Link}{Name}{/block:Link}{block:Chat}{Title}{/block:Chat}{block:Audio}{TrackName}{/block:Audio}"
+                        >facebook</a>
+                    <a  class="icon hatena-bookmark-button hatena"
+                        href="http://b.hatena.ne.jp/entry/{Permalink}"
+                        data-hatena-bookmark-title="{block:IndexPage}{block:Title}{Title} - {/block:Title}tips!{/block:IndexPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}tips!{/block:PermalinkPage}"
+                        data-hatena-bookmark-layout="simple"
+                        title="このエントリをはてなブックマークに追加"
+                        >hatenabookmark</a>
+
+                </div>
+                <div>
+                {block:RebloggedFrom}
+                    <a href="{ReblogParentURL}">Reblog from {ReblogParentName}</a>
+                {/block:RebloggedFrom}
+
+                {block:PostNotes}
+                <article class="comments">{PostNotes}</article>
+                {/block:PostNotes}
+
+                {block:IfDisqusShortname}
+                <section class="comments"><div id="disqus_thread"></div></section>
+                <noscript>
+                    <a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">
+                        {lang:View the discussion thread}
+                    </a>
+                </noscript>
+                {/block:IfDisqusShortname}
+
+            </div>
+            </footer>
+        </section>
+    </article>
+    {/block:Posts}
+
+    {block:Pagination}
+    <footer>
+        <div class="pagenation">
+            {block:PreviousPage}
+            <a href="{PreviousPage}" class="icon">back</a>
+            {/block:PreviousPage}
+            {block:NextPage}
+            <a href="{NextPage}" class="icon">next</a>
+            {/block:NextPage}
+        </div>
+    </footer>
+    {/block:Pagination}
+
+    <!-- hatena bookmark -->
+    <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+    <!-- show disqus -->
+    {block:IfDisqusShortname}
+    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    {/block:IfDisqusShortname}
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-38428043-1', 'sleepingcatsyndrome.com');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+    </script>
+
+</body>
+</html>
